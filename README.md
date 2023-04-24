@@ -30,11 +30,16 @@ In this step, you expand the employer's program in the first step.
 - The other five threads are responsible for checking each of the collected files.
 - Note that each file should be checked by only one thread, as well as the list of files
   it is extracted by the first thread, other threads check the collected files.
- - Each of the checking threads repeats one address from the collected addresses
+- Each of the checking threads repeats one address from the collected addresses
   receives (if the list is empty, it waits for an address to be added). For example, for
-  checking the "iso.dat/var" file first checks if the "md5.iso.dat/var" file exists or
-  no If it is not available, it sends the address of this file to the server to calculate the value of "md5.iso.dat/var".
+  checking the `/var/iso.dat` file first checks if the `/var/md5.iso.dat` file exists or
+  no If it is not available, it sends the address of this file to the server to calculate the value of `/var/md5.iso.dat`.
   and adds this address to the list of addresses to check again in the future. If the file
-  if »md5.iso.dat/var »/ exists, the MD5 thread will recalculate the file »iso.dat/var »/ and
-  compares the contents of the file »md5.iso.dat/var »/. If they are not equal, it prints a message that shows
+  if `/var/md5.iso.dat` exists, the MD5 thread will recalculate the file `/var/iso.dat` and
+  compares the contents of the file `/var/md5.iso.dat`. If they are not equal, it prints a message that shows
   indicates that the MD5 value has changed
+- At any moment, only one thread can send a request to the server (synchronization is required).
+-  To access the collected addresses and send the request to the server, there should not be a competitive situation to give
+- To test and see the results of this section, the program should automatically generate all 3 files
+  By workers, change the values of a file to arbitrary value (null or string or number) or random.
+  ![Screenshot 2023-04-24 181435](https://user-images.githubusercontent.com/131694088/234081458-2f799221-7251-486f-9af5-748bff2eeeff.jpg)
