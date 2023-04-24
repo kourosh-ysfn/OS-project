@@ -8,8 +8,8 @@ def employer_func():
     # creating client socket
     server_address = ('localhost', 6000)
     conn = Client(address=server_address)
-    for i in range(1, 1002):
-        if i == 1001:
+    for i in range(1, 52):
+        if i == 51:
             conn.send('close')
         else:
             conn.send(f".\\TransactionFiles\\{i}.json")
