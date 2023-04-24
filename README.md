@@ -23,7 +23,7 @@ Implement three categories of processes: server, client and worker processes.
 - To test, gradually transfer a large number of files to the server with the help of a number of client processes.
 
 ## Step Two:
-In this step, you expand the employer's program in the first step.
+In this step, we expand the employer's program in the first step.
 
 - The employer's program has six threads that run concurrently.
 - One of these threads recursively extracts the list of system files.
